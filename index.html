@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Geo-Location</title>
+  </head>
+  <body>
+    <h1>Your Latitude is <span id="latitude">0.00</span></h1>
+    <h1>Your Longitude is <span id="longitude">0.00</span></h1>
+
+    <button id="get-location">Get Your Location!</button>
+    <script>
+      //Keon200430009
+      //Setting variables that will get the elements by their ID from the HTML
+      let getLocation = document.getElementById("get-location");
+      let lat = document.getElementById("latitude");
+      let long = document.getElementById("longitude");
+      //Adding an addEventListener to listen for a click to run a function called nav
+      getLocation.addEventListener("click", nav);
+      //Defining the function nav
+      function nav(){
+        //Running the geolocation API
+        navigator.geolocation.getCurrentPosition(function(position) {
+        let latText = position.coords.latitude;
+        let longText = position.coords.longitude;
+
+        lat.textContent = latText.toFixed(5);
+        long.textContent = longText.toFixed(5);
+      })
+    };
+    </script>
+  </body>
+</html>
